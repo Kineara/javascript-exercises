@@ -1,41 +1,34 @@
-function add () {
-	return 0 + arguments[0] + arguments[1];
+function add (a,b) {
+	return a + b;
 }
 
-function subtract () {
-	return arguments[0] - arguments[1];
+function subtract (a,b) {
+	return a - b;
 }
 
-function sum () {
-	const numList = Array.from(...arguments);
-	const sum = numList.reduce((total, num) => {
-		return total + num;
-	}, 0);
-	return sum;
+function sum (array) {
+	return array.reduce((total,num) => total + num, 0);
 }
 
-function multiply () {
-	const numList = Array.from(...arguments);
-	const product = numList.reduce((total,num) => {
-		return total *= num;
-	}, 1);
-	return product;
+function multiply (array) {
+	return array.length 
+		? array.reduce((total,num) => total * num) 
+		: 0;
 }
 
-function power() {
-	return Math.pow(arguments[0], arguments[1]);
+function power(a,b) {
+	return Math.pow(a, b);
 }
 
-function factorial() {
-	let num = arguments[0];
-	if (num == 0 || num == 1)
+function factorial(num) {
+	if (num === 0)
 		return 1;
-	let result = num;
+	let acc = num;
 	while (num > 1) {
 		num --;
-		result *= num;
+		acc *= num;
 	}
-	return result;
+	return acc;
 }
 
 module.exports = {
