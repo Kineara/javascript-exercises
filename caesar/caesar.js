@@ -1,15 +1,28 @@
 const caesar = function(string,shift) {
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    const alphabetLower = 'abcdefghijklmnopqrstuvwxyz';
+    const alphabetCaps = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let codedString = '';
-    inputString = Array.from(string);
-    // Get alphabetical index of each letter in the inputString array
-    // Subtract the shift factor
-    // Use new index to get new letter from alphabet
-    // Concatenate letter to codedString
+    let inputString = Array.from(string);
+
+    // save capital letter indexes
+    const capitalLetters = inputString.map(letter => alphabetCaps.includes(letter) ? 1 : 0);   
+
     indexes = inputString.map(function (letter) {
-        codedString += alphabet[alphabet.indexOf(letter) - shift];
+        if (alphabetLower.includes(letter) || alphabetCaps.includes(letter)) {
+        return alphabetLower.indexOf(letter.toLowerCase()) - shift
+        } else return letter;
     })
+    console.log(indexes);
+
+    for (let i=0; i<capitalLetters.length; i++) {
+        if (!isNaN(indexes[i]) && (indexes[i] !== " ")) {
+        capitalLetters[i] === 1
+        ? codedString += alphabetCaps[indexes[i]]
+        : codedString += alphabetLower[indexes[i]];
+        } else codedString += indexes[i];
+    }
+    
     console.log(codedString);
-}   
+}
 
 module.exports = caesar
