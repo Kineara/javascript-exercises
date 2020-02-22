@@ -24,7 +24,7 @@ const caesar = function(string,shift) {
             : codedString += alphabetLower[indexes[i]];
         } else codedString += indexes[i];
     }
-    
+       
     return codedString;
 }
 
